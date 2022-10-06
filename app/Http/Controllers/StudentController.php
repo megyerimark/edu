@@ -28,9 +28,20 @@ class StudentController extends Controller {
     //     ];
     // }
 //Select* from students where name = "Kata" and "email" ="valaqmi@teszt.hu
+    // public function listStudent(){
+    //     $students =DB::table("students")->where("id",6)->where("name",
+    //      "Buster Muller")->get();
+    //     echo "<pre>";
+    //     print_r($students);
+    // }
+
+
+    //Select * from students where id =4 and email = asd@feg.hu or name ="kata"
     public function listStudent(){
-        $students =DB::table("students")->where("id",6)->where("name",
-         "Buster Muller")->get();
+        $students =DB::table("students")->where("id",6)
+        ->where( function($query){
+                $query->where("name","Buster Muller")->orwhere("email","qwyman@yahoo.com");
+    })-> get();
         echo "<pre>";
         print_r($students);
     }
