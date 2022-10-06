@@ -18,20 +18,19 @@ class StudentController extends Controller {
       $request->validated();
         print_r( $request->all() );
     }
-    public function messages() {
+    // public function messages() {
 
-        return[
-            "name.required"=>"Elvárt",
-            "name.min"=>"Kevés",
-            "email.required"=>"Elvárt",
-            "name.required"=>"Elvárt"
-        ];
-    }
-
+    //     return[
+    //         "name.required"=>"Elvárt",
+    //         "name.min"=>"Kevés",
+    //         "email.required"=>"Elvárt",
+    //         "name.required"=>"Elvárt"
+    //     ];
+    // }
+//Select* from students where name = "Kata" and "email" ="valaqmi@teszt.hu
     public function listStudent(){
-        $students =DB::table("students")->select(
-            
-            "name"," email as levél"); 
+        $students =DB::table("students")->where("id",6)->where("name",
+         "Buster Muller")->get();
         echo "<pre>";
         print_r($students);
     }
